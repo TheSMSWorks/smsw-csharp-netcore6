@@ -12,7 +12,7 @@
     <Description>C# .net 6 library for the SMS Works API</Description>
     <Copyright>No Copyright</Copyright>
     <RootNamespace>Org.OpenAPITools</RootNamespace>
-    <Version>1.8.0</Version>
+    <Version>1.8.1</Version>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Org.OpenAPITools.xml</DocumentationFile>
     <RepositoryUrl>https://github.com/TheSMSWorks/smsw-csharp-netcore6.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
