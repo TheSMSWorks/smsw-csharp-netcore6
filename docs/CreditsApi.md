@@ -4,11 +4,11 @@ All URIs are relative to *https://api.thesmsworks.co.uk/v1*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**Credits**](CreditsApi.md#credits) | **GET** /credits/balance |  |
+| [**CreditsBalanceGet**](CreditsApi.md#creditsbalanceget) | **GET** /credits/balance |  |
 
-<a name="credits"></a>
-# **Credits**
-> CreditsResponse Credits ()
+<a id="creditsbalanceget"></a>
+# **CreditsBalanceGet**
+> CreditsResponse CreditsBalanceGet ()
 
 
 
@@ -24,7 +24,7 @@ using Org.OpenAPITools.Model;
 
 namespace Example
 {
-    public class CreditsExample
+    public class CreditsBalanceGetExample
     {
         public static void Main()
         {
@@ -39,12 +39,12 @@ namespace Example
 
             try
             {
-                CreditsResponse result = apiInstance.Credits();
+                CreditsResponse result = apiInstance.CreditsBalanceGet();
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling CreditsApi.Credits: " + e.Message);
+                Debug.Print("Exception when calling CreditsApi.CreditsBalanceGet: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -53,20 +53,20 @@ namespace Example
 }
 ```
 
-#### Using the CreditsWithHttpInfo variant
+#### Using the CreditsBalanceGetWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    ApiResponse<CreditsResponse> response = apiInstance.CreditsWithHttpInfo();
+    ApiResponse<CreditsResponse> response = apiInstance.CreditsBalanceGetWithHttpInfo();
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling CreditsApi.CreditsWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling CreditsApi.CreditsBalanceGetWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }

@@ -4,12 +4,12 @@ All URIs are relative to *https://api.thesmsworks.co.uk/v1*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**GetError**](UtilsApi.md#geterror) | **GET** /utils/errors/{errorcode} |  |
-| [**Test**](UtilsApi.md#test) | **GET** /utils/test |  |
+| [**UtilsErrorsErrorcodeGet**](UtilsApi.md#utilserrorserrorcodeget) | **GET** /utils/errors/{errorcode} |  |
+| [**UtilsTestGet**](UtilsApi.md#utilstestget) | **GET** /utils/test |  |
 
-<a name="geterror"></a>
-# **GetError**
-> ExtendedErrorModel GetError (string errorcode)
+<a id="utilserrorserrorcodeget"></a>
+# **UtilsErrorsErrorcodeGet**
+> ExtendedErrorModel UtilsErrorsErrorcodeGet (string errorcode)
 
 
 
@@ -25,7 +25,7 @@ using Org.OpenAPITools.Model;
 
 namespace Example
 {
-    public class GetErrorExample
+    public class UtilsErrorsErrorcodeGetExample
     {
         public static void Main()
         {
@@ -41,12 +41,12 @@ namespace Example
 
             try
             {
-                ExtendedErrorModel result = apiInstance.GetError(errorcode);
+                ExtendedErrorModel result = apiInstance.UtilsErrorsErrorcodeGet(errorcode);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling UtilsApi.GetError: " + e.Message);
+                Debug.Print("Exception when calling UtilsApi.UtilsErrorsErrorcodeGet: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -55,20 +55,20 @@ namespace Example
 }
 ```
 
-#### Using the GetErrorWithHttpInfo variant
+#### Using the UtilsErrorsErrorcodeGetWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    ApiResponse<ExtendedErrorModel> response = apiInstance.GetErrorWithHttpInfo(errorcode);
+    ApiResponse<ExtendedErrorModel> response = apiInstance.UtilsErrorsErrorcodeGetWithHttpInfo(errorcode);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling UtilsApi.GetErrorWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling UtilsApi.UtilsErrorsErrorcodeGetWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -101,9 +101,9 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="test"></a>
-# **Test**
-> TestResponse Test ()
+<a id="utilstestget"></a>
+# **UtilsTestGet**
+> TestResponse UtilsTestGet ()
 
 
 
@@ -119,7 +119,7 @@ using Org.OpenAPITools.Model;
 
 namespace Example
 {
-    public class TestExample
+    public class UtilsTestGetExample
     {
         public static void Main()
         {
@@ -134,12 +134,12 @@ namespace Example
 
             try
             {
-                TestResponse result = apiInstance.Test();
+                TestResponse result = apiInstance.UtilsTestGet();
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling UtilsApi.Test: " + e.Message);
+                Debug.Print("Exception when calling UtilsApi.UtilsTestGet: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -148,20 +148,20 @@ namespace Example
 }
 ```
 
-#### Using the TestWithHttpInfo variant
+#### Using the UtilsTestGetWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    ApiResponse<TestResponse> response = apiInstance.TestWithHttpInfo();
+    ApiResponse<TestResponse> response = apiInstance.UtilsTestGetWithHttpInfo();
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling UtilsApi.TestWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling UtilsApi.UtilsTestGetWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
