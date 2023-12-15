@@ -12,7 +12,7 @@ All URIs are relative to *https://api.thesmsworks.co.uk/v1*
 
 <a id="batchanypost"></a>
 # **BatchAnyPost**
-> BatchMessageResponse BatchAnyPost (List<Message> messages)
+> BatchMessageResponse BatchAnyPost (Object messages)
 
 
 
@@ -40,7 +40,7 @@ namespace Example
             // config.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new BatchMessagesApi(config);
-            var messages = new List<Message>(); // List<Message> | An array of messages
+            var messages = null;  // Object | An array of messages
 
             try
             {
@@ -81,7 +81,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **messages** | [**List&lt;Message&gt;**](Message.md) | An array of messages |  |
+| **messages** | **Object** | An array of messages |  |
 
 ### Return type
 

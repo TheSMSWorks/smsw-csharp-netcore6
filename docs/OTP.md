@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Sender** | **string** | The sender of the message. Should be no longer than 11 characters for alphanumeric or 15 characters for numeric sender ID&#39;s. No spaces or special characters. | [optional] 
 **Destination** | **string** | The phone number of the recipient. | [optional] 
+**Length** | **Object** | The length of the generated passcode. The default length is 6 characters, which will apply if this parameter is omitted. All generated passcodes are numeric. Optional. | [optional] 
 **Template** | **string** | A template to use as the content for the message. You must include the &#39;{{passcode}}&#39; placeholder, which will be replaced by the generated passcode when the message is sent. Optional. | [optional] 
 **Validity** | **decimal** | The length of time in seconds for which the generated passcode should be valid. Optional. | [optional] 
 **Passcode** | **string** | A passcode you supply for use in the message template. This will be stored on the OTP record in our system for later verification. Optional. | [optional] 

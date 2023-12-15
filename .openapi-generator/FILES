@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 Org.OpenAPITools.sln
 README.md
 api/openapi.yaml
@@ -13,7 +12,6 @@ docs/CreditsResponse.md
 docs/DeletedMessageResponse.md
 docs/ErrorModel.md
 docs/ExtendedErrorModel.md
-docs/ExtendedErrorModelAllOf.md
 docs/Message.md
 docs/MessageMetadata.md
 docs/MessageResponse.md
@@ -24,7 +22,7 @@ docs/OTP.md
 docs/OTPResponse.md
 docs/OTPVerify.md
 docs/OTPVerifyResponse.md
-docs/OtpApi.md
+docs/OneTimePasswordApi.md
 docs/Query.md
 docs/QueryMetadata.md
 docs/ScheduledBatchResponse.md
@@ -36,16 +34,12 @@ docs/SendMessageResponse.md
 docs/TestResponse.md
 docs/UtilsApi.md
 git_push.sh
-src/Org.OpenAPITools.Test/Api/OtpApiTests.cs
-src/Org.OpenAPITools.Test/Model/OTPResponseTests.cs
-src/Org.OpenAPITools.Test/Model/OTPTests.cs
-src/Org.OpenAPITools.Test/Model/OTPVerifyResponseTests.cs
-src/Org.OpenAPITools.Test/Model/OTPVerifyTests.cs
+src/Org.OpenAPITools.Test/Api/OneTimePasswordApiTests.cs
 src/Org.OpenAPITools.Test/Org.OpenAPITools.Test.csproj
 src/Org.OpenAPITools/Api/BatchMessagesApi.cs
 src/Org.OpenAPITools/Api/CreditsApi.cs
 src/Org.OpenAPITools/Api/MessagesApi.cs
-src/Org.OpenAPITools/Api/OtpApi.cs
+src/Org.OpenAPITools/Api/OneTimePasswordApi.cs
 src/Org.OpenAPITools/Api/UtilsApi.cs
 src/Org.OpenAPITools/Client/ApiClient.cs
 src/Org.OpenAPITools/Client/ApiException.cs
@@ -71,7 +65,6 @@ src/Org.OpenAPITools/Model/CreditsResponse.cs
 src/Org.OpenAPITools/Model/DeletedMessageResponse.cs
 src/Org.OpenAPITools/Model/ErrorModel.cs
 src/Org.OpenAPITools/Model/ExtendedErrorModel.cs
-src/Org.OpenAPITools/Model/ExtendedErrorModelAllOf.cs
 src/Org.OpenAPITools/Model/Message.cs
 src/Org.OpenAPITools/Model/MessageMetadata.cs
 src/Org.OpenAPITools/Model/MessageResponse.cs
