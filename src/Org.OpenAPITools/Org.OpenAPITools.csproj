@@ -9,7 +9,7 @@ Contact: support@thesmsworks.co.uk
 -->
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo><!-- setting GenerateAssemblyInfo to false causes this bug https://github.com/dotnet/project-system/issues/3934 -->
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{A08AFC3C-C0BD-4077-97E9-CB9CB139CADE}</ProjectGuid>
@@ -17,10 +17,15 @@ Contact: support@thesmsworks.co.uk
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Org.OpenAPITools</RootNamespace>
     <AssemblyName>Org.OpenAPITools</AssemblyName>
-    <TargetFrameworkVersion>net6.0</TargetFrameworkVersion>
+    <TargetFramework>net6.0</TargetFramework>
     <Authors>The SMS Works Ltd</Authors>
     <Company>The SMS Works Ltd</Company>
-    <Description>C# .net 6 library for the SMS Works API (Target Framework now net 7.0)</Description>
+    <Description>C# .net 6 library for the SMS Works API</Description>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Org.OpenAPITools.xml</DocumentationFile>
+    <RepositoryUrl>https://github.com/TheSMSWorks/smsw-csharp-netcore6.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReleaseNotes>Minor update</PackageReleaseNotes>
+  <Nullable>annotations</Nullable>`
     <Version>1.11.0</Version>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
