@@ -25,7 +25,7 @@ Contact: support@thesmsworks.co.uk
     <RepositoryUrl>https://github.com/TheSMSWorks/smsw-csharp-netcore6.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageReleaseNotes>Minor update</PackageReleaseNotes>
-  <Nullable>annotations</Nullable>`
+    <Nullable>annotations</Nullable>
     <Version>1.11.0</Version>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
