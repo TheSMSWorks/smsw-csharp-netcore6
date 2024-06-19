@@ -1,5 +1,5 @@
+
 # Org.OpenAPITools.Model.OTPResponse
-Response schema for the /otp/send method
 
 ## Properties
 
@@ -11,5 +11,7 @@ Name | Type | Description | Notes
 **CreditsUsed** | **decimal** | The number of credits used to send this message | [optional] 
 **Messageparts** | **decimal** | The number of message parts used to send this message | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to README]](../README.md)
 

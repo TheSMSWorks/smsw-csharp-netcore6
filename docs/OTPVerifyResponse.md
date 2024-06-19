@@ -1,5 +1,5 @@
+
 # Org.OpenAPITools.Model.OTPVerifyResponse
-Response schema for the /otp/verify method
 
 ## Properties
 
@@ -14,5 +14,7 @@ Name | Type | Description | Notes
 **Expires** | **string** | The ISO 8601 date/time at which this OTP expires | [optional] 
 **Modified** | **string** | The ISO 8601 date/time at which this OTP was modified (typically when it was verified) | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to README]](../README.md)
 

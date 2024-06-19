@@ -2,23 +2,26 @@
 
 All URIs are relative to *https://api.thesmsworks.co.uk/v1*
 
-| Method | HTTP request | Description |
-|--------|--------------|-------------|
-| [**BatchAnyPost**](BatchMessagesApi.md#batchanypost) | **POST** /batch/any |  |
-| [**BatchBatchidGet**](BatchMessagesApi.md#batchbatchidget) | **GET** /batch/{batchid} |  |
-| [**BatchSchedulePost**](BatchMessagesApi.md#batchschedulepost) | **POST** /batch/schedule |  |
-| [**BatchSendPost**](BatchMessagesApi.md#batchsendpost) | **POST** /batch/send |  |
-| [**BatchesScheduleBatchidDelete**](BatchMessagesApi.md#batchesschedulebatchiddelete) | **DELETE** /batches/schedule/{batchid} |  |
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**BatchAnyPost**](BatchMessagesApi.md#batchanypost) | **POST** /batch/any | Send a collection of unique SMS messages
+[**BatchBatchidGet**](BatchMessagesApi.md#batchbatchidget) | **GET** /batch/{batchid} | 
+[**BatchSchedulePost**](BatchMessagesApi.md#batchschedulepost) | **POST** /batch/schedule | Schedule a batch of SMS messages
+[**BatchSendPost**](BatchMessagesApi.md#batchsendpost) | **POST** /batch/send | Send an SMS message to multiple recipients
+[**BatchesScheduleBatchidDelete**](BatchMessagesApi.md#batchesschedulebatchiddelete) | **DELETE** /batches/schedule/{batchid} | Cancel a scheduled batch
 
-<a id="batchanypost"></a>
-# **BatchAnyPost**
+
+
+## BatchAnyPost
+
 > BatchMessageResponse BatchAnyPost (Object messages)
 
+Send a collection of unique SMS messages
 
-
-Sends a collection of unique SMS messages. Batches may contain up to 5000 messages at a time.
+Batches may contain up to 5000 messages at a time.
 
 ### Example
+
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -32,25 +35,25 @@ namespace Example
     {
         public static void Main()
         {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.thesmsworks.co.uk/v1";
+            Configuration.Default.BasePath = "https://api.thesmsworks.co.uk/v1";
             // Configure API key authorization: JWT
-            config.AddApiKey("Authorization", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // config.AddApiKeyPrefix("Authorization", "Bearer");
+            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
 
-            var apiInstance = new BatchMessagesApi(config);
+            var apiInstance = new BatchMessagesApi(Configuration.Default);
             var messages = null;  // Object | An array of messages
 
             try
             {
+                // Send a collection of unique SMS messages
                 BatchMessageResponse result = apiInstance.BatchAnyPost(messages);
                 Debug.WriteLine(result);
             }
-            catch (ApiException  e)
+            catch (ApiException e)
             {
-                Debug.Print("Exception when calling BatchMessagesApi.BatchAnyPost: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print("Exception when calling BatchMessagesApi.BatchAnyPost: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -58,30 +61,12 @@ namespace Example
 }
 ```
 
-#### Using the BatchAnyPostWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    ApiResponse<BatchMessageResponse> response = apiInstance.BatchAnyPostWithHttpInfo(messages);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling BatchMessagesApi.BatchAnyPostWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
-
 ### Parameters
 
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| **messages** | **Object** | An array of messages |  |
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **messages** | **Object**| An array of messages | 
 
 ### Return type
 
@@ -93,8 +78,8 @@ catch (ApiException e)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json;charset=UTF-8
+- **Content-Type**: application/json
+- **Accept**: application/json;charset=UTF-8
 
 
 ### HTTP response details
@@ -104,17 +89,22 @@ catch (ApiException e)
 | **402** | Error |  -  |
 | **0** | Error |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a id="batchbatchidget"></a>
-# **BatchBatchidGet**
+
+## BatchBatchidGet
+
 > List&lt;MessageResponse&gt; BatchBatchidGet (string batchid)
 
 
 
-Retrieve all messages in a batch with the given batch ID
+Retrieve all messages with the given batch ID
 
 ### Example
+
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -128,14 +118,13 @@ namespace Example
     {
         public static void Main()
         {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.thesmsworks.co.uk/v1";
+            Configuration.Default.BasePath = "https://api.thesmsworks.co.uk/v1";
             // Configure API key authorization: JWT
-            config.AddApiKey("Authorization", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // config.AddApiKeyPrefix("Authorization", "Bearer");
+            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
 
-            var apiInstance = new BatchMessagesApi(config);
+            var apiInstance = new BatchMessagesApi(Configuration.Default);
             var batchid = "batchid_example";  // string | The ID of the batch you would like returned
 
             try
@@ -143,10 +132,10 @@ namespace Example
                 List<MessageResponse> result = apiInstance.BatchBatchidGet(batchid);
                 Debug.WriteLine(result);
             }
-            catch (ApiException  e)
+            catch (ApiException e)
             {
-                Debug.Print("Exception when calling BatchMessagesApi.BatchBatchidGet: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print("Exception when calling BatchMessagesApi.BatchBatchidGet: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -154,30 +143,12 @@ namespace Example
 }
 ```
 
-#### Using the BatchBatchidGetWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    ApiResponse<List<MessageResponse>> response = apiInstance.BatchBatchidGetWithHttpInfo(batchid);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling BatchMessagesApi.BatchBatchidGetWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
-
 ### Parameters
 
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| **batchid** | **string** | The ID of the batch you would like returned |  |
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **batchid** | **string**| The ID of the batch you would like returned | 
 
 ### Return type
 
@@ -189,8 +160,8 @@ catch (ApiException e)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json;charset=UTF-8
+- **Content-Type**: Not defined
+- **Accept**: application/json;charset=UTF-8
 
 
 ### HTTP response details
@@ -200,17 +171,22 @@ catch (ApiException e)
 | **404** | Error |  -  |
 | **0** | Error |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a id="batchschedulepost"></a>
-# **BatchSchedulePost**
+
+## BatchSchedulePost
+
 > ScheduledBatchResponse BatchSchedulePost (BatchMessage smsMessage)
 
+Schedule a batch of SMS messages
 
-
-Schedules a batch of SMS messages to be sent at the date time you specify
+Schedules a batch of SMS messages to be sent at the date/time you specify
 
 ### Example
+
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -224,25 +200,25 @@ namespace Example
     {
         public static void Main()
         {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.thesmsworks.co.uk/v1";
+            Configuration.Default.BasePath = "https://api.thesmsworks.co.uk/v1";
             // Configure API key authorization: JWT
-            config.AddApiKey("Authorization", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // config.AddApiKeyPrefix("Authorization", "Bearer");
+            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
 
-            var apiInstance = new BatchMessagesApi(config);
+            var apiInstance = new BatchMessagesApi(Configuration.Default);
             var smsMessage = new BatchMessage(); // BatchMessage | Message properties
 
             try
             {
+                // Schedule a batch of SMS messages
                 ScheduledBatchResponse result = apiInstance.BatchSchedulePost(smsMessage);
                 Debug.WriteLine(result);
             }
-            catch (ApiException  e)
+            catch (ApiException e)
             {
-                Debug.Print("Exception when calling BatchMessagesApi.BatchSchedulePost: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print("Exception when calling BatchMessagesApi.BatchSchedulePost: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -250,30 +226,12 @@ namespace Example
 }
 ```
 
-#### Using the BatchSchedulePostWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    ApiResponse<ScheduledBatchResponse> response = apiInstance.BatchSchedulePostWithHttpInfo(smsMessage);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling BatchMessagesApi.BatchSchedulePostWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
-
 ### Parameters
 
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| **smsMessage** | [**BatchMessage**](BatchMessage.md) | Message properties |  |
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **smsMessage** | [**BatchMessage**](BatchMessage.md)| Message properties | 
 
 ### Return type
 
@@ -285,8 +243,8 @@ catch (ApiException e)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json;charset=UTF-8
+- **Content-Type**: application/json
+- **Accept**: application/json;charset=UTF-8
 
 
 ### HTTP response details
@@ -296,17 +254,22 @@ catch (ApiException e)
 | **402** | Error |  -  |
 | **0** | Error |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a id="batchsendpost"></a>
-# **BatchSendPost**
+
+## BatchSendPost
+
 > BatchMessageResponse BatchSendPost (BatchMessage smsMessage)
 
+Send an SMS message to multiple recipients
 
-
-Send a single SMS message to multiple recipients.  Batches may contain up to 5000 messages at a time.
+Batches may contain up to 5000 messages at a time
 
 ### Example
+
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -320,25 +283,25 @@ namespace Example
     {
         public static void Main()
         {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.thesmsworks.co.uk/v1";
+            Configuration.Default.BasePath = "https://api.thesmsworks.co.uk/v1";
             // Configure API key authorization: JWT
-            config.AddApiKey("Authorization", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // config.AddApiKeyPrefix("Authorization", "Bearer");
+            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
 
-            var apiInstance = new BatchMessagesApi(config);
+            var apiInstance = new BatchMessagesApi(Configuration.Default);
             var smsMessage = new BatchMessage(); // BatchMessage | Message properties
 
             try
             {
+                // Send an SMS message to multiple recipients
                 BatchMessageResponse result = apiInstance.BatchSendPost(smsMessage);
                 Debug.WriteLine(result);
             }
-            catch (ApiException  e)
+            catch (ApiException e)
             {
-                Debug.Print("Exception when calling BatchMessagesApi.BatchSendPost: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print("Exception when calling BatchMessagesApi.BatchSendPost: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -346,30 +309,12 @@ namespace Example
 }
 ```
 
-#### Using the BatchSendPostWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    ApiResponse<BatchMessageResponse> response = apiInstance.BatchSendPostWithHttpInfo(smsMessage);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling BatchMessagesApi.BatchSendPostWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
-
 ### Parameters
 
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| **smsMessage** | [**BatchMessage**](BatchMessage.md) | Message properties |  |
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **smsMessage** | [**BatchMessage**](BatchMessage.md)| Message properties | 
 
 ### Return type
 
@@ -381,8 +326,8 @@ catch (ApiException e)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json;charset=UTF-8
+- **Content-Type**: application/json
+- **Accept**: application/json;charset=UTF-8
 
 
 ### HTTP response details
@@ -392,17 +337,22 @@ catch (ApiException e)
 | **402** | Error |  -  |
 | **0** | Error |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a id="batchesschedulebatchiddelete"></a>
-# **BatchesScheduleBatchidDelete**
+
+## BatchesScheduleBatchidDelete
+
 > CancelledMessageResponse BatchesScheduleBatchidDelete (string batchid)
 
+Cancel a scheduled batch
 
-
-Cancels a scheduled SMS message
+Cancels a batch of scheduled messages using the supplied batch ID
 
 ### Example
+
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -416,25 +366,25 @@ namespace Example
     {
         public static void Main()
         {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.thesmsworks.co.uk/v1";
+            Configuration.Default.BasePath = "https://api.thesmsworks.co.uk/v1";
             // Configure API key authorization: JWT
-            config.AddApiKey("Authorization", "YOUR_API_KEY");
+            Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // config.AddApiKeyPrefix("Authorization", "Bearer");
+            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
 
-            var apiInstance = new BatchMessagesApi(config);
+            var apiInstance = new BatchMessagesApi(Configuration.Default);
             var batchid = "batchid_example";  // string | The ID of the batch you would like returned
 
             try
             {
+                // Cancel a scheduled batch
                 CancelledMessageResponse result = apiInstance.BatchesScheduleBatchidDelete(batchid);
                 Debug.WriteLine(result);
             }
-            catch (ApiException  e)
+            catch (ApiException e)
             {
-                Debug.Print("Exception when calling BatchMessagesApi.BatchesScheduleBatchidDelete: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print("Exception when calling BatchMessagesApi.BatchesScheduleBatchidDelete: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -442,30 +392,12 @@ namespace Example
 }
 ```
 
-#### Using the BatchesScheduleBatchidDeleteWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    ApiResponse<CancelledMessageResponse> response = apiInstance.BatchesScheduleBatchidDeleteWithHttpInfo(batchid);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling BatchMessagesApi.BatchesScheduleBatchidDeleteWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
-
 ### Parameters
 
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| **batchid** | **string** | The ID of the batch you would like returned |  |
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **batchid** | **string**| The ID of the batch you would like returned | 
 
 ### Return type
 
@@ -477,8 +409,8 @@ catch (ApiException e)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json;charset=UTF-8
+- **Content-Type**: Not defined
+- **Accept**: application/json;charset=UTF-8
 
 
 ### HTTP response details
@@ -487,5 +419,8 @@ catch (ApiException e)
 | **200** | Success |  -  |
 | **0** | Error |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 

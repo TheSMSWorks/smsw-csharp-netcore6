@@ -1,5 +1,5 @@
+
 # Org.OpenAPITools.Model.BatchMessage
-SMS Message Batch
 
 ## Properties
 
@@ -9,11 +9,13 @@ Name | Type | Description | Notes
 **Destinations** | **List&lt;string&gt;** | Telephone numbers of each of the recipients | 
 **Content** | **string** | Message to send to the recipient | 
 **Deliveryreporturl** | **string** | The url to which we should POST delivery reports to for this message. If none is specified, we&#39;ll use the global delivery report URL that you&#39;ve configured on your account page. | [optional] 
-**Schedule** | **string** | Date-time at which to send the batch. This is only used by the batch/schedule service. | [optional] 
+**Schedule** | **string** | date/time at which to send the batch. This is only used by the batch/schedule service. | [optional] 
 **Tag** | **string** | An identifying label for the message, which you can use to filter and report on messages you&#39;ve sent later. Ideal for campaigns. A maximum of 280 characters. | [optional] 
 **Ttl** | **decimal** | The number of minutes before the delivery report is deleted. Optional. Omit to prevent delivery report deletion. Integer. | [optional] 
 **Validity** | **decimal** | The optional number of minutes to attempt delivery before the message is marked as EXPIRED. Optional. The default is 2880 minutes. Integer. | [optional] 
 **Ai** | **bool** | Used to determine whether The SMS Works AI Optimiser should be used in the event that the message is just longer than the 1 or 2 credit boundary. This setting overrides the AI Optimiser configuration on your SMS Works account. | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to README]](../README.md)
 

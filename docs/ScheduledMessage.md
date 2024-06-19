@@ -1,5 +1,5 @@
+
 # Org.OpenAPITools.Model.ScheduledMessage
-the scheduled message content
 
 ## Properties
 
@@ -9,7 +9,9 @@ Name | Type | Description | Notes
 **Content** | **string** | Message to be sent to the recipient | [optional] 
 **Destination** | **string** | For single scheduled messages, the mobile number of the recipient | [optional] 
 **Destinations** | **List&lt;string&gt;** | For batch messages, the mobile numbers of each of the recipients | [optional] 
-**Schedule** | **string** | Date-time at which to send the batch. This is only used by the batch/schedule service. | [optional] 
+**Schedule** | **string** | date/time at which to send the batch. This is only used by the batch/schedule service. | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to README]](../README.md)
 

@@ -1,5 +1,5 @@
+
 # Org.OpenAPITools.Model.OTP
-Parameters for the generation and sending of One-Time Passwords
 
 ## Properties
 
@@ -13,5 +13,7 @@ Name | Type | Description | Notes
 **Passcode** | **string** | A passcode you supply for use in the message template. This will be stored on the OTP record in our system for later verification. Optional. | [optional] 
 **Metadata** | **Object** | A JSON object of no longer than 1024 bytes, containing as many parameters as you wish, to store data for use in your application. This will be returned when you verify the passcode. | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to README]](../README.md)
 
