@@ -39,8 +39,6 @@ docs/TestResponse.md
 docs/UtilsApi.md
 git_push.sh
 mono_nunit_test.sh
-src/Org.OpenAPITools.Test/Model/CountryResponseTests.cs
-src/Org.OpenAPITools.Test/Model/MessageVolumeResponseTests.cs
 src/Org.OpenAPITools.Test/Org.OpenAPITools.Test.csproj
 src/Org.OpenAPITools.Test/packages.config
 src/Org.OpenAPITools/Api/BatchMessagesApi.cs
@@ -87,5 +85,4 @@ src/Org.OpenAPITools/Model/SendMessageResponse.cs
 src/Org.OpenAPITools/Model/TestResponse.cs
 src/Org.OpenAPITools/Org.OpenAPITools.csproj
 src/Org.OpenAPITools/Org.OpenAPITools.nuspec
-src/Org.OpenAPITools/Properties/AssemblyInfo.cs
 src/Org.OpenAPITools/packages.config
