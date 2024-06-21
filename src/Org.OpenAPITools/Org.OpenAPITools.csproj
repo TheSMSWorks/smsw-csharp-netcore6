@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <!--
 The SMS Works API
 
@@ -25,9 +24,12 @@ Contact: support@thesmsworks.co.uk
     <RepositoryUrl>https://github.com/TheSMSWorks/smsw-csharp-netcore6.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageReleaseNotes>Minor update</PackageReleaseNotes>
-    <Nullable>annotations</Nullable>
+    <LangVersion>8.0</LangVersion>
+    <Nullable>enable</Nullable>
     <Version>1.11.0</Version>
     <FileAlignment>512</FileAlignment>
+    <IsPackable>true</IsPackable>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

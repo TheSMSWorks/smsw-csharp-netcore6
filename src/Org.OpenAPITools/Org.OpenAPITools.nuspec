@@ -2,18 +2,18 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <!-- The identifier that must be unique within the hosting gallery -->
-        <id>$id$</id>
+        <id>TheSMSWorks.API</id>
         <title>OpenAPI Library</title>
 
         <!-- The package version number that is used when resolving dependencies -->
-        <version>$version$</version>
+        <version>1.11.0</version>
 
         <!-- Authors contain text that appears directly on the gallery -->
-        <authors>$author$</authors>
+        <authors>The SMS Works Ltd</authors>
 
         <!-- Owners are typically nuget.org identities that allow gallery
              users to easily find other packages by the same owners.  -->
-        <owners>$author$</owners>
+        <owners>The SMS Works Ltd</owners>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <developmentDependency>false</developmentDependency>
 
