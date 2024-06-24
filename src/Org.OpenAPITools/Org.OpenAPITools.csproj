@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
 The SMS Works API
 
@@ -12,10 +13,15 @@ Contact: support@thesmsworks.co.uk
     <AssemblyTitle>OpenAPI Library</AssemblyTitle>
     <ProjectGuid>{A08AFC3C-C0BD-4077-97E9-CB9CB139CADE}</ProjectGuid>
     <PackageId>TheSMSWorks.API</PackageId>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F8993568-FEE0-42C0-AA8F-92D17052D572}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Org.OpenAPITools</RootNamespace>
     <AssemblyName>Org.OpenAPITools</AssemblyName>
+    <TargetFrameworkVersion>net6.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
     <TargetFramework>net6.0</TargetFramework>
     <Authors>The SMS Works Ltd</Authors>
     <Company>The SMS Works Ltd</Company>
@@ -27,9 +33,6 @@ Contact: support@thesmsworks.co.uk
     <LangVersion>8.0</LangVersion>
     <Nullable>enable</Nullable>
     <Version>1.11.0</Version>
-    <FileAlignment>512</FileAlignment>
-    <IsPackable>true</IsPackable>
-    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
