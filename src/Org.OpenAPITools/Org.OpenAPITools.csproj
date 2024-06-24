@@ -20,9 +20,8 @@ Contact: support@thesmsworks.co.uk
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Org.OpenAPITools</RootNamespace>
     <AssemblyName>Org.OpenAPITools</AssemblyName>
-    <TargetFrameworkVersion>net6.0</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
     <TargetFramework>net6.0</TargetFramework>
+    <FileAlignment>512</FileAlignment>
     <Authors>The SMS Works Ltd</Authors>
     <Company>The SMS Works Ltd</Company>
     <Description>C# .net 6 library for the SMS Works API</Description>

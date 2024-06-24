@@ -16,7 +16,7 @@ Contact: support@thesmsworks.co.uk
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Org.OpenAPITools.Test</RootNamespace>
     <AssemblyName>Org.OpenAPITools.Test</AssemblyName>
-    <TargetFrameworkVersion>net6.0</TargetFrameworkVersion>
+    <TargetFramework>net6.0</TargetFramework>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
