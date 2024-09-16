@@ -8,7 +8,7 @@ info:
     \ Pay only for delivered texts, all failed UK messages are refunded."
   termsOfService: https://thesmsworks.co.uk/terms
   title: The SMS Works API
-  version: 1.9.0
+  version: 1.11.0
   x-logo:
     url: https://qa.thesmsworks.co.uk/docs/logo-transparent.png
     altText: The SMS Works
@@ -50,11 +50,35 @@ paths:
       tags:
       - Messages
       x-codegen-request-body-name: smsMessage
+      x-codeSamples:
+      - lang: cURL
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/1e6146db6fb59ea43d3587a3456e303e/raw/dfbb709af145d4a2b0ba0d37b4b23e79cb4484b0/message.curl
+      - lang: C#
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/8383697fe2e422a89daf0146070b66ef/raw/b40f361f79a4ef69ca6497a6e16b6964a0c843f0/message.cs
+      - lang: Go
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/d29fd4031a111e2e757996731e4dfe4b/raw/37c98c3a8f96716bea1ca29d57d39de5ed669533/message.go
+      - lang: Java
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/35160c90d1651994881f4e904745a825/raw/e452bf135479fafe17e969ce03106758d1d75eeb/message.java
+      - lang: JavaScript
+        label: Node.js
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/5c5b93d4531d2b7ea57a605b6e80d0a0/raw/40986549cdc8b968f83bfe29900aa2cf34d329d4/message.js
+      - lang: PHP
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/39275391a493617bfffebd333a75ae2c/raw/dc9f4d0c1257270ea7feb3afa9effd1d492277eb/message.php
+      - lang: Python
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/97d7b6224f924fef9e414c02af14472f/raw/4ecf0e67114cced8e9c6a317618bd37c7e0dca28/message.py
+      - lang: Ruby
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/01a1c542b9e811904a15f8b7f5dc4ddb/raw/a68390d3bf5414dcf59dd76d46c6985cf0aa70a4/message.rb
   /message/flash:
     post:
-      description: "Sends an SMS flash message, which appears on the recipients lock\
-        \ screen"
-      operationId: sendFlashMessage
+      description: Send an SMS flash message
       requestBody:
         content:
           application/json:
@@ -89,7 +113,7 @@ paths:
     x-swagger-router-controller: flash
   /message/schedule:
     post:
-      description: Schedules an SMS message to be sent at the date-time you specify
+      description: Schedules an SMS message to be sent at the date/time you specify
       requestBody:
         content:
           application/json:
@@ -114,13 +138,79 @@ paths:
           description: Error
       security:
       - JWT: []
+      summary: Schedule an SMS message
       tags:
       - Messages
       x-codegen-request-body-name: smsMessage
+      x-codeSamples:
+      - lang: cURL
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/e9a475db6575330baa66245638a5c7ea/raw/5f84242c3905f95abe7fa35056c86bccc526ebd0/message_schedule.curl
+      - lang: C#
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/3cb7623910159368d89895e923b083e2/raw/89c222be675b7296a0eb3abbb1c9989cb0318a49/message_schedule.cs
+      - lang: Go
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/d606d754360a843a83fd6d155baf6ba3/raw/f49058709c8560601449f1197651e706c014fecf/message_schedule.go
+      - lang: Java
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/0ac8fc3920297f3d4e05e89500019890/raw/c3de9f6c8481ff3ebaebdca005593e6502a7e3c6/message_schedule.java
+      - lang: JavaScript
+        label: Node.js
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/7446d04f777b1fa7c7bf2cbd0a75ee85/raw/b8b5ba128c2680858a93a34ae863825e6bc4eb4f/message_schedule.js
+      - lang: PHP
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/72931f7ff142a109ab31807030500765/raw/501e3fe558dd21c08586be4fb47c698f63b9ec93/message_schedule.php
+      - lang: Python
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/4839f5b46c8b5bbf4ea2a4a596e91ef4/raw/cf84e077500471702c2319c47636d35d7e358d2f/message_schedule.py
+      - lang: Ruby
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/a9b4d31c99a17508d6b2437f164c501c/raw/7a21027ed780869338783fcea398c9c7c8d7c4e8/message_schedule.rb
     x-swagger-router-controller: smpp-client
+  /binary/send:
+    post:
+      description: Sends an SMS Message in Binary format. This can be used to send
+        files and data to devices that process binary content. Especially useful for
+        Internet of Things (IoT). Message content should be encoded in hex pairs (e.g.
+        '65 54 74 73 6d 20 73 65 61 73 65 67 2e')
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Message'
+        description: Message properties
+        required: true
+      responses:
+        "201":
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/SendMessageResponse'
+          description: Success
+        "402":
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ExtendedErrorModel'
+          description: Error
+        default:
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ExtendedErrorModel'
+          description: Error
+      security:
+      - JWT: []
+      summary: Send a binary SMS message
+      tags:
+      - Messages
+      x-codegen-request-body-name: smsMessage
   /messages:
     post:
-      description: Retrieve up to 1000 messages matching your search criteria
+      description: Retrieve up to 1000 messages matching criteria specified in the
+        request
       requestBody:
         content:
           application/json:
@@ -144,12 +234,39 @@ paths:
           description: Error
       security:
       - JWT: []
+      summary: Get messages matching your criteria
       tags:
       - Messages
       x-codegen-request-body-name: query
+      x-codeSamples:
+      - lang: cURL
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/ef9f254a76006970e44f28fa8da4ef16/raw/3137c8d76ee13433741629a6e056d7d476a289f1/messages.curl
+      - lang: C#
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/ac12269e70fedccab75215491060d99e/raw/69ead8a7c234e6432a9dfa1f42c90d14681f1c49/messages.cs
+      - lang: Go
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/3a9e7bd1a36204f5cafd45db996044de/raw/6b2d03a4a88b1f5d56db81bdbcd3b9ec4b0aaff5/messages.go
+      - lang: Java
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/97b8bf336c239db3e2626d57f80abefa/raw/5a8b283276c3608b9997b4fbd3c6eb042e40dd6d/messages.java
+      - lang: JavaScript
+        label: Node.js
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/400d5afbe58d7f56ac50abd0a1ac14dc/raw/802f95e9524d70a1cdd5af7ac12fd4080f03c419/messages.js
+      - lang: PHP
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/01184dbd31155d102b28faaab30865d4/raw/125454529158207239e1aec0abf58f6df1ee9fcb/messages.php
+      - lang: Python
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/1f4bb22e38e7f4ea37483cb197c1c9e9/raw/5dab58d84ac3348fde64be2abea099c9463763ac/messages.py
+      - lang: Ruby
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/6c39e11ab1c4b6f6fb45df6d7be621c9/raw/4319c2f9fdf4a5379beae7c09e91a63a6ba92a72/messages.rb
   /messages/inbox:
     post:
-      description: Get unread uncoming messages matching your search criteria
+      description: Retrieve unread uncoming messages matching your criteria
       requestBody:
         content:
           application/json:
@@ -173,12 +290,13 @@ paths:
           description: Error
       security:
       - JWT: []
+      summary: Retrieve unread uncoming messages
       tags:
       - Messages
       x-codegen-request-body-name: query
   /messages/failed:
     post:
-      description: Get failed messages matching your search criteria
+      description: Retrieve failed messages matching your criteria
       requestBody:
         content:
           application/json:
@@ -207,7 +325,7 @@ paths:
       x-codegen-request-body-name: query
   /messages/schedule:
     get:
-      description: "Returns a list of messages scheduled from your account, comprising\
+      description: "Return a list of messages scheduled from your account, comprising\
         \ any messages scheduled in the last 3 months and any scheduled to send in\
         \ the future"
       responses:
@@ -225,11 +343,12 @@ paths:
           description: Error
       security:
       - JWT: []
+      summary: Retrieve scheduled messages
       tags:
       - Messages
   /messages/{messageid}:
     delete:
-      description: Delete the message with the mathcing messageid
+      description: Delete the message with the matching messageid
       parameters:
       - description: The ID of the message you would like returned
         explode: false
@@ -263,7 +382,7 @@ paths:
       tags:
       - Messages
     get:
-      description: Retrieve a logged message by the message ID
+      description: Retrieve a delivery report by the message ID
       parameters:
       - description: The ID of the message you would like returned
         explode: false
@@ -294,11 +413,38 @@ paths:
           description: Error
       security:
       - JWT: []
+      summary: Get message by messageid
       tags:
       - Messages
+      x-codeSamples:
+      - lang: cURL
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/ea7efd0381c6492d30a13e1a9ad98e7a/raw/f119dfcd15ba875e2e39c0ce8e400436739b9cdc/message.curl
+      - lang: C#
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/ea4d8eb5a7cbaae0d65a838d88f4d9d1/raw/8e0ecb9c0af0292594ed38babc8c566330ce08b4/message.cs
+      - lang: Go
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/e08c175d81a74989d06985cbdde74f3e/raw/5b7026cca8785188b63530a1a183fbd92e64aab2/message.go
+      - lang: Java
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/f1b524fd81334169997d86920af2cf94/raw/cae6b08e71e9606d8621cdb8cbe06381f4a0c6b6/message.java
+      - lang: JavaScript
+        label: Node.js
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/8ba3aed6f2ae459ff46763c8dbfce6e0/raw/5ff2eb8438ef237f8f2f2c40ebcecc571d852424/message.js
+      - lang: PHP
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/5bf978163eccdcc2acad6638dba71f7e/raw/a1f8140cabc030788f2a88634841261c439130e9/message.php
+      - lang: Python
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/0f567349ababe24551f0d09199d597ba/raw/496c9e66b4500aef2074f37016542f87a94397d1/message.py
+      - lang: Ruby
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/0c2fcfde7592530821fec9a03f564541/raw/b5da8d39993f9309e34fa8044dba84dff6896e97/message.rb
   /messages/schedule/{messageid}:
     delete:
-      description: Cancels a scheduled SMS message
+      description: Cancels a scheduled SMS message matching the provided messageid
       parameters:
       - description: The ID of the message you would like returned
         explode: false
@@ -323,12 +469,33 @@ paths:
           description: Error
       security:
       - JWT: []
+      summary: Cancel scheduled SMS message
+      tags:
+      - Messages
+  /messages/volume:
+    get:
+      description: Retrieve the number of messages sent since midnight last night
+      responses:
+        "200":
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/MessageVolumeResponse'
+          description: Success
+        default:
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ExtendedErrorModel'
+          description: Error
+      security:
+      - JWT: []
+      summary: Volume of messages sent since midnight
       tags:
       - Messages
   /batch/send:
     post:
-      description: Send a single SMS message to multiple recipients.  Batches may
-        contain up to 5000 messages at a time.
+      description: Batches may contain up to 5000 messages at a time
       requestBody:
         content:
           application/json:
@@ -357,13 +524,39 @@ paths:
           description: Error
       security:
       - JWT: []
+      summary: Send an SMS message to multiple recipients
       tags:
       - Batch Messages
       x-codegen-request-body-name: smsMessage
+      x-codeSamples:
+      - lang: cURL
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/04f0365c6e9b2ef2caba44051dbeefd2/raw/1954239dfc28614edbcab87bedb575165127351a/batch.curl
+      - lang: C#
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/e6ebffa965b887140119875bb2d62031/raw/9c372e2b5095142928b2ea4f946e14fe9e58fc9f/batch.cs
+      - lang: Go
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/007a710efbd008e98ede0c30de0530a8/raw/51842db4f21d18be8820be13e3ddce5924225dfe/batch.go
+      - lang: Java
+        source:
+          $ref: https://gist.github.com/TheSMSWorks/3c2ee4b70af2c41c1261bbf868d33666/raw/0a68f896ea334effd562a6081bcd08dca5265e11/batch.java
+      - lang: JavaScript
+        label: Node.js
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/412bcb26e5ec31d59f265c8b7d82d2a6/raw/d03bc15dd4aafd13d311cf422773f55ff498a397/batch.js
+      - lang: PHP
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/8958195fb4454644def8976bb3a18194/raw/a020f91e7b95820ab3ce33263d1fa28c82070279/batch.php
+      - lang: Python
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/409f97762067900e5d65cba955bef8f0/raw/87be9b6d36a400cd4955872bb7e180be7387cc5a/batch.py
+      - lang: Ruby
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/36aade45bbca2e7efc72e2c9225ac7f4/raw/056a474857d414f957a7211c882a64124c40e677/batch.rb
   /batch/any:
     post:
-      description: Sends a collection of unique SMS messages. Batches may contain
-        up to 5000 messages at a time.
+      description: Batches may contain up to 5000 messages at a time.
       requestBody:
         content:
           application/json:
@@ -392,12 +585,39 @@ paths:
           description: Error
       security:
       - JWT: []
+      summary: Send a collection of unique SMS messages
       tags:
       - Batch Messages
       x-codegen-request-body-name: messages
+      x-codeSamples:
+      - lang: cURL
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/f512defce7096cc3fed21ec81a9d2b9c/raw/e000c0c5b8518b5f2ac1aea5a9308539f64264f6/batch_any.curl
+      - lang: C#
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/938fd3e782f252ca3bc8148e834c2a9f/raw/958ae5894ab77310f595ec6158531a5935973534/batch_any.cs
+      - lang: Go
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/b28606baa069fd3191d47a413190cafc/raw/c3ba970b5fd920ebecb85cc99f148058aa0ce77f/batch_any.go
+      - lang: Java
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/3d8881e758dc8dccc556247911d90ac3/raw/35a0038d81b4b8552b27634ffa9aed8eed260bb4/batch_any.java
+      - lang: JavaScript
+        label: Node.js
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/2fa2f111c004f82962bbc5287a3b7d26/raw/7a24ab0d762bf38c98ed7f440208d7bc01a04c6a/batch_any.js
+      - lang: PHP
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/0486c803fc550fb9586dd5bb2e04de38/raw/6e812e624d8ef84dc87bb6cb01c7769cc778e0be/batch_any.php
+      - lang: Python
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/2f6fb7429f4053ae68ea46f4bc776bdf/raw/acc4726ade0550af8fcad6610a1e2fe66b0e60b5/batch_any.py
+      - lang: Ruby
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/a72971661cd1c364eac100e2c833d199/raw/4f6fd82667d9e260f06d60e9b0990422028da313/batch_any.rb
   /batch/{batchid}:
     get:
-      description: Retrieve all messages in a batch with the given batch ID
+      description: Retrieve all messages with the given batch ID
       parameters:
       - description: The ID of the batch you would like returned
         explode: false
@@ -432,9 +652,35 @@ paths:
       - JWT: []
       tags:
       - Batch Messages
+      x-codeSamples:
+      - lang: cURL
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/5f2c38f09c955768859a566ad3e43b87/raw/bcdb623c45d693d1d0a2e597fad87126537e16b6/batch_id.curl
+      - lang: C#
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/06354538e6a3163485bd6e6443932af3/raw/20504773edcb1d55dad4a2c3388c2637ecad8047/batch_id.cs
+      - lang: Go
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/1519293b6dcf2f36baee7e0ed3e546c6/raw/894100ab09a2c049938f7cbc7d19b4479ddf79df/batch_id.go
+      - lang: Java
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/c23dbae440fa4ebf118daf3be796c0f9/raw/cbe09bbb6b7ae96dee2f12652a324c56fe2b9aac/batch_id.java
+      - lang: JavaScript
+        label: Node.js
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/79d30db0f0906a819791301250e1b815/raw/6377d877ca26fc85d4da758e37780961f1fe66ef/batch_id.js
+      - lang: PHP
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/2d3b2c7cebe60420be365687842543c9/raw/155c1ccb56ef58cc339e9caea6f8862848a04f3b/batch_id.php
+      - lang: Python
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/342d78e2325c9932067c50b2457478d2/raw/250e52bcd189c3e66d50235fc20cea9c7827c69e/batch_id.py
+      - lang: Ruby
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/fbb743854b06d5f76da9503601e014d5/raw/d54be0e64b0a0acaa2342947ecf833a2a65350ca/batch_id.rb
   /batch/schedule:
     post:
-      description: Schedules a batch of SMS messages to be sent at the date time you
+      description: Schedules a batch of SMS messages to be sent at the date/time you
         specify
       requestBody:
         content:
@@ -464,12 +710,40 @@ paths:
           description: Error
       security:
       - JWT: []
+      summary: Schedule a batch of SMS messages
       tags:
       - Batch Messages
       x-codegen-request-body-name: smsMessage
+      x-codeSamples:
+      - lang: cURL
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/e526a05faf54ddea43dc97988afddb86/raw/3fadbec6179cdaaf9f9f86f835d128d738414fe6/batch_schedule.curl
+      - lang: C#
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/2f30f947c9d7e34f303bbcc93f87bfc7/raw/50b1cdfc2e45883d914e6fe417dd7c3178d74eac/batch_schedule.cs
+      - lang: Go
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/c153cb3f4d8387455cc9d87a9024615b/raw/3eabe5171867b8b7ab558da27a760f2b11b96c14/batch_schedule.go
+      - lang: Java
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/a8ecb4a3a41c748661c9f5a068fae628/raw/5f8c25042880b9d57fd4eaa6358301c4843c2b5e/batch_schedule.java
+      - lang: JavaScript
+        label: Node.js
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/2518d1a64b9af6f8782613ed37bbfab0/raw/6b5b3998e96be8b9fe10cab986090d4c08bed48d/batch_schedule.js
+      - lang: PHP
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/c944acae6658b1459c15bc2c51c0fc3d/raw/32066fceca7b28a34107b505842e3cd54d214261/batch_schedule.php
+      - lang: Python
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/26798416ae17305a7cb15fea2ec66cb3/raw/efbf14c317081bd0ce4ad8a8bf0e549f62a0a740/batch_schedule.py
+      - lang: Ruby
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/e51dc83e33bc1325ddf7fc5062c3c65a/raw/a97f4d547b798d5114f9566d7b9529bb0637d5bc/batch_schedule.rb
   /batches/schedule/{batchid}:
     delete:
-      description: Cancels a scheduled SMS message
+      description: Cancels a batch of scheduled messages using the supplied batch
+        ID
       parameters:
       - description: The ID of the batch you would like returned
         explode: false
@@ -494,11 +768,12 @@ paths:
           description: Error
       security:
       - JWT: []
+      summary: Cancel a scheduled batch
       tags:
       - Batch Messages
   /otp/send:
     post:
-      description: Generates and sends a One-Time Password
+      description: Generate and send a One-Time Password
       requestBody:
         content:
           application/json:
@@ -524,9 +799,35 @@ paths:
       tags:
       - One-Time Password
       x-codegen-request-body-name: otp
+      x-codeSamples:
+      - lang: cURL
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/018b626a6a82e2338c588286366ba25a/raw/9b9dddef946a9404a76c03ffee4987790b60b770/otp_send.curl
+      - lang: C#
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/40ab43d25ba0d7bcd25b0e670c4d0c63/raw/5383116143bbf9b9320e03e00bb8dd9b6191951d/otp_send.cs
+      - lang: Go
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/e196a74aa11a9af2088e6d4de7ceab3b/raw/7184ac90331f6288286beefae08334d4a28907f3/otp_send.go
+      - lang: Java
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/f21396d2ad2baa2a994e79925ec1f0e0/raw/56e0ca7649d95901f49a750635291bd2b0427a54/otp_send.java
+      - lang: JavaScript
+        label: Node.js
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/c1baf1a5af79b57da32a3ea2d472411d/raw/92229cd15fbbf952519f70961d5a858b5468a80e/otp_send.js
+      - lang: PHP
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/d78579df3f0f20aad4d5e655a1b6f088/raw/119f9ebe30735faba0b0e92043064706da8a8b8d/opt_send.php
+      - lang: Python
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/d4ca174ac6cc2e2a0a2f8938cd7eaffd/raw/d106fcd93b2556ffa863d45b758295bdcd683b4f/opt_send.py
+      - lang: Ruby
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/febe33b46661b231c704e94caf40e403/raw/04d59e54b7448742c246284c82f826760d414882/otp_send.rb
   /otp/verify:
     post:
-      description: Generates and sends a One-Time Password
+      description: Verify a One-Time Password
       requestBody:
         content:
           application/json:
@@ -558,6 +859,32 @@ paths:
       tags:
       - One-Time Password
       x-codegen-request-body-name: passcode
+      x-codeSamples:
+      - lang: cURL
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/5191ba7f2f7485000fc857018980ebd7/raw/e1b4cc5ad5500026bd1da36c68b94b94bfdbb1e6/otp_verify.curl
+      - lang: C#
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/db0289570d320d6d640041c7d44e230f/raw/39f6fa321ffee42482037c5603913349034da096/otp_verify.cs
+      - lang: Go
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/3ba69b695990a9bd3a051ea4dd3c80b7/raw/6ab584b1f0fcf20d16f49a15e03dc692ff94ba22/otp_verify.go
+      - lang: Java
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/a479ed2ab66e7cb5c51e4a97e847cf64/raw/3255ec50d5d08a13589e6fd3d8084697e9a4346b/otp_verify.java
+      - lang: JavaScript
+        label: Node.js
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/3b307a31127bf5b0ad768ddbb1d6e781/raw/36ef720aa1239797c044ff28b6c01f25751d8e47/otp_verify.js
+      - lang: PHP
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/052bb0f0fc5b606ee1083e909834776f/raw/06a64fb4172a0784d97582288b0be61298510bfe/otp_verify.php
+      - lang: Python
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/aca7f0f45218322d09085e7278996037/raw/9370aadf7da405ae88af6b93cf80a66126c802d4/otp_verify.py
+      - lang: Ruby
+        source:
+          $ref: https://gist.githubusercontent.com/TheSMSWorks/e93fc542d2d94d3cb3931c7efdb65e17/raw/4f7818e69bf080d04b3e5b282eb55db8d13ec265/otp_verify.rb
   /otp/{messageid}:
     get:
       description: Retrieve an OTP by it's message ID
@@ -595,7 +922,7 @@ paths:
       - One-Time Password
   /credits/balance:
     get:
-      description: Returns the number of credits currently available on the account
+      description: The credit balance on your SMS Works account
       responses:
         "200":
           content:
@@ -613,9 +940,40 @@ paths:
       - JWT: []
       tags:
       - Credits
+  /credits/{countrycode}:
+    get:
+      description: The credit cost for each SMS sent to the country code provided
+      parameters:
+      - description: The 2-letter ISO country code of the country you want to retrieve
+          the credit cost for.
+        explode: false
+        in: path
+        name: countrycode
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/CountryResponse'
+          description: Success
+        default:
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+          description: Error
+      security:
+      - JWT: []
+      tags:
+      - Credits
   /utils/test:
     get:
-      description: Returns the customer ID to the caller
+      description: A generic test method which can be used to verify that the API
+        is up and that your calls are authenticated successfully
       responses:
         "200":
           content:
@@ -631,6 +989,7 @@ paths:
           description: Error
       security:
       - JWT: []
+      summary: Return the customer ID to the caller
       tags:
       - Utils
   /utils/errors/{errorcode}:
@@ -655,6 +1014,7 @@ paths:
           description: Error
       security:
       - JWT: []
+      summary: Get error by code
       tags:
       - Utils
   /swagger:
@@ -678,6 +1038,28 @@ components:
           description: The number of remaining credits on your SMS Works account.
             Floating point number.
           example: 180
+          type: number
+      required:
+      - credits
+      type: object
+    CountryResponse:
+      example:
+        country: Serbia
+        code: RS
+        credits: 6.75
+      properties:
+        code:
+          description: The country code supplied in the API call.
+          example: RS
+          type: string
+        country:
+          description: The name of the country.
+          example: Serbia
+          type: string
+        credits:
+          description: The number of credits required to send an SMS to the country
+            code provided. Floating point number.
+          example: 6.75
           type: number
       required:
       - credits
@@ -833,7 +1215,7 @@ components:
           example: http://your.domain.com/delivery/report/path
           type: string
         schedule:
-          description: Date-time at which to send the batch. This is only used by
+          description: date/time at which to send the batch. This is only used by
             the batch/schedule service.
           example: Wed Jul 19 2017 20:26:28 GMT+0100 (BST)
           type: string
@@ -893,7 +1275,7 @@ components:
             type: string
           type: array
         schedule:
-          description: Date-time at which to send the batch. This is only used by
+          description: date/time at which to send the batch. This is only used by
             the batch/schedule service.
           example: Wed Jul 19 2017 20:26:28 GMT+0100 (BST)
           type: string
@@ -926,6 +1308,15 @@ components:
           type: boolean
         message:
           $ref: '#/components/schemas/ScheduledMessagesResponse_message'
+      type: object
+    MessageVolumeResponse:
+      example:
+        volume: 0.8008281904610115
+      properties:
+        volume:
+          description: the number of messages sent from your account since midnight
+            last night
+          type: number
       type: object
     Query:
       description: search parameters for querying the message database
@@ -971,11 +1362,11 @@ components:
           example: SKYWALKER
           type: string
         from:
-          description: The date-time from which you would like matching messages
+          description: The date/time from which you would like matching messages
           example: Wed Jul 12 2017 20:26:28 GMT+0100 (BST)
           type: string
         to:
-          description: The date-time to which you would like matching messages
+          description: The date/time to which you would like matching messages
           example: Wed Jul 19 2017 20:26:28 GMT+0100 (BST)
           type: string
         limit:
@@ -1334,6 +1725,8 @@ components:
           type: string
       type: object
     ErrorModel:
+      example:
+        message: message
       properties:
         message:
           type: string
@@ -1355,6 +1748,11 @@ components:
         - errorCode
         - status
         type: object
+      example:
+        permanent: true
+        errorCode: 0.8008281904610115
+        message: message
+        status: status
     Message_metadata:
       example:
       - key: myKey1

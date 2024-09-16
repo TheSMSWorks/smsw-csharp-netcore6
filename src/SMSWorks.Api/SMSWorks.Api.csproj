@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo><!-- setting GenerateAssemblyInfo to false causes this bug https://github.com/dotnet/project-system/issues/3934 -->
+    <TargetFramework>net6.0</TargetFramework>
+    <AssemblyName>SMSWorks.Api</AssemblyName>
+    <PackageId>SMSWorks.Api</PackageId>
+    <OutputType>Library</OutputType>
+    <Authors>The SMS Works Ltd</Authors>
+    <Company>The SMS Works Ltd</Company>
+    <AssemblyTitle>OpenAPI Library</AssemblyTitle>
+    <Description>C# .net 6 library for the SMS Works</Description>
+    <Copyright>No Copyright</Copyright>
+    <RootNamespace>SMSWorks.Api</RootNamespace>
+    <Version>1.11.0</Version>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\SMSWorks.Api.xml</DocumentationFile>
+    <RepositoryUrl>https://github.com/TheSMSWorks/smsw-csharp-netcore6</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReleaseNotes>Minor update</PackageReleaseNotes>
+    <Nullable>annotations</Nullable>
+    <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JsonSubTypes" Version="2.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="RestSharp" Version="110.2.0" />
+    <PackageReference Include="Polly" Version="8.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>

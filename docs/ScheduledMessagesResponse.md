@@ -1,5 +1,5 @@
-
-# Org.OpenAPITools.Model.ScheduledMessagesResponse
+# SMSWorks.Api.Model.ScheduledMessagesResponse
+details of a message scheduled to be sent at a specified date and time
 
 ## Properties
 
@@ -10,7 +10,5 @@ Name | Type | Description | Notes
 **Batch** | **bool** | Describes whether the a batch of messages has been scheduled, or just a single message | [optional] 
 **Message** | [**ScheduledMessagesResponseMessage**](ScheduledMessagesResponseMessage.md) |  | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to README]](../README.md)
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -1,5 +1,5 @@
-
-# Org.OpenAPITools.Model.Query
+# SMSWorks.Api.Model.Query
+search parameters for querying the message database
 
 ## Properties
 
@@ -17,7 +17,5 @@ Name | Type | Description | Notes
 **Unread** | **bool** | In queries for incoming messages (&#39;status&#39; is &#39;INCOMING&#39;), specify whether you explicitly want unread messages (true) or read messages (false). Omit this parameter in other circumstances. | [optional] 
 **Metadata** | [**QueryMetadata**](QueryMetadata.md) |  | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to README]](../README.md)
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

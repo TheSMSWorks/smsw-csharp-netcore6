@@ -1,5 +1,5 @@
-
-# Org.OpenAPITools.Model.ScheduledMessage
+# SMSWorks.Api.Model.ScheduledMessage
+the scheduled message content
 
 ## Properties
 
@@ -11,7 +11,5 @@ Name | Type | Description | Notes
 **Destinations** | **List&lt;string&gt;** | For batch messages, the mobile numbers of each of the recipients | [optional] 
 **Schedule** | **string** | date/time at which to send the batch. This is only used by the batch/schedule service. | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to README]](../README.md)
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

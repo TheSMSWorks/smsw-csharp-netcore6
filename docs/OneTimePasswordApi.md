@@ -1,17 +1,15 @@
-# Org.OpenAPITools.Api.OneTimePasswordApi
+# SMSWorks.Api.Api.OneTimePasswordApi
 
 All URIs are relative to *https://api.thesmsworks.co.uk/v1*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**OtpMessageidGet**](OneTimePasswordApi.md#otpmessageidget) | **GET** /otp/{messageid} | 
-[**OtpSendPost**](OneTimePasswordApi.md#otpsendpost) | **POST** /otp/send | 
-[**OtpVerifyPost**](OneTimePasswordApi.md#otpverifypost) | **POST** /otp/verify | 
+| Method | HTTP request | Description |
+|--------|--------------|-------------|
+| [**OtpMessageidGet**](OneTimePasswordApi.md#otpmessageidget) | **GET** /otp/{messageid} |  |
+| [**OtpSendPost**](OneTimePasswordApi.md#otpsendpost) | **POST** /otp/send |  |
+| [**OtpVerifyPost**](OneTimePasswordApi.md#otpverifypost) | **POST** /otp/verify |  |
 
-
-
-## OtpMessageidGet
-
+<a id="otpmessageidget"></a>
+# **OtpMessageidGet**
 > OTPVerifyResponse OtpMessageidGet (string messageid)
 
 
@@ -19,13 +17,12 @@ Method | HTTP request | Description
 Retrieve an OTP by it's message ID
 
 ### Example
-
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
+using SMSWorks.Api.Api;
+using SMSWorks.Api.Client;
+using SMSWorks.Api.Model;
 
 namespace Example
 {
@@ -33,13 +30,14 @@ namespace Example
     {
         public static void Main()
         {
-            Configuration.Default.BasePath = "https://api.thesmsworks.co.uk/v1";
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.thesmsworks.co.uk/v1";
             // Configure API key authorization: JWT
-            Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
 
-            var apiInstance = new OneTimePasswordApi(Configuration.Default);
+            var apiInstance = new OneTimePasswordApi(config);
             var messageid = "messageid_example";  // string | The ID of the OTP you would like returned
 
             try
@@ -47,10 +45,10 @@ namespace Example
                 OTPVerifyResponse result = apiInstance.OtpMessageidGet(messageid);
                 Debug.WriteLine(result);
             }
-            catch (ApiException e)
+            catch (ApiException  e)
             {
-                Debug.Print("Exception when calling OneTimePasswordApi.OtpMessageidGet: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling OneTimePasswordApi.OtpMessageidGet: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -58,12 +56,30 @@ namespace Example
 }
 ```
 
+#### Using the OtpMessageidGetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<OTPVerifyResponse> response = apiInstance.OtpMessageidGetWithHttpInfo(messageid);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling OneTimePasswordApi.OtpMessageidGetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **messageid** | **string**| The ID of the OTP you would like returned | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **messageid** | **string** | The ID of the OTP you would like returned |  |
 
 ### Return type
 
@@ -75,8 +91,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: application/json;charset=UTF-8
+ - **Content-Type**: Not defined
+ - **Accept**: application/json;charset=UTF-8
 
 
 ### HTTP response details
@@ -86,14 +102,10 @@ Name | Type | Description  | Notes
 | **404** | Error |  -  |
 | **0** | Error |  -  |
 
-[[Back to top]](#)
-[[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-
-## OtpSendPost
-
+<a id="otpsendpost"></a>
+# **OtpSendPost**
 > OTPResponse OtpSendPost (OTP otp)
 
 
@@ -101,13 +113,12 @@ Name | Type | Description  | Notes
 Generate and send a One-Time Password
 
 ### Example
-
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
+using SMSWorks.Api.Api;
+using SMSWorks.Api.Client;
+using SMSWorks.Api.Model;
 
 namespace Example
 {
@@ -115,13 +126,14 @@ namespace Example
     {
         public static void Main()
         {
-            Configuration.Default.BasePath = "https://api.thesmsworks.co.uk/v1";
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.thesmsworks.co.uk/v1";
             // Configure API key authorization: JWT
-            Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
 
-            var apiInstance = new OneTimePasswordApi(Configuration.Default);
+            var apiInstance = new OneTimePasswordApi(config);
             var otp = new OTP(); // OTP | OTP properties
 
             try
@@ -129,10 +141,10 @@ namespace Example
                 OTPResponse result = apiInstance.OtpSendPost(otp);
                 Debug.WriteLine(result);
             }
-            catch (ApiException e)
+            catch (ApiException  e)
             {
-                Debug.Print("Exception when calling OneTimePasswordApi.OtpSendPost: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling OneTimePasswordApi.OtpSendPost: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -140,12 +152,30 @@ namespace Example
 }
 ```
 
+#### Using the OtpSendPostWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<OTPResponse> response = apiInstance.OtpSendPostWithHttpInfo(otp);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling OneTimePasswordApi.OtpSendPostWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **otp** | [**OTP**](OTP.md)| OTP properties | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **otp** | [**OTP**](OTP.md) | OTP properties |  |
 
 ### Return type
 
@@ -157,8 +187,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
-- **Accept**: application/json;charset=UTF-8
+ - **Content-Type**: application/json
+ - **Accept**: application/json;charset=UTF-8
 
 
 ### HTTP response details
@@ -167,14 +197,10 @@ Name | Type | Description  | Notes
 | **201** | Success |  -  |
 | **0** | Error |  -  |
 
-[[Back to top]](#)
-[[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-
-## OtpVerifyPost
-
+<a id="otpverifypost"></a>
+# **OtpVerifyPost**
 > OTPVerifyResponse OtpVerifyPost (OTPVerify passcode)
 
 
@@ -182,13 +208,12 @@ Name | Type | Description  | Notes
 Verify a One-Time Password
 
 ### Example
-
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
+using SMSWorks.Api.Api;
+using SMSWorks.Api.Client;
+using SMSWorks.Api.Model;
 
 namespace Example
 {
@@ -196,13 +221,14 @@ namespace Example
     {
         public static void Main()
         {
-            Configuration.Default.BasePath = "https://api.thesmsworks.co.uk/v1";
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.thesmsworks.co.uk/v1";
             // Configure API key authorization: JWT
-            Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
 
-            var apiInstance = new OneTimePasswordApi(Configuration.Default);
+            var apiInstance = new OneTimePasswordApi(config);
             var passcode = new OTPVerify(); // OTPVerify | One-Time Password
 
             try
@@ -210,10 +236,10 @@ namespace Example
                 OTPVerifyResponse result = apiInstance.OtpVerifyPost(passcode);
                 Debug.WriteLine(result);
             }
-            catch (ApiException e)
+            catch (ApiException  e)
             {
-                Debug.Print("Exception when calling OneTimePasswordApi.OtpVerifyPost: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print("Exception when calling OneTimePasswordApi.OtpVerifyPost: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
         }
@@ -221,12 +247,30 @@ namespace Example
 }
 ```
 
+#### Using the OtpVerifyPostWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<OTPVerifyResponse> response = apiInstance.OtpVerifyPostWithHttpInfo(passcode);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling OneTimePasswordApi.OtpVerifyPostWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **passcode** | [**OTPVerify**](OTPVerify.md)| One-Time Password | 
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **passcode** | [**OTPVerify**](OTPVerify.md) | One-Time Password |  |
 
 ### Return type
 
@@ -238,8 +282,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
-- **Accept**: application/json;charset=UTF-8
+ - **Content-Type**: application/json
+ - **Accept**: application/json;charset=UTF-8
 
 
 ### HTTP response details
@@ -249,8 +293,5 @@ Name | Type | Description  | Notes
 | **404** | Error |  -  |
 | **0** | Error |  -  |
 
-[[Back to top]](#)
-[[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
